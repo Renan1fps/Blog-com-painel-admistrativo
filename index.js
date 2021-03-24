@@ -3,6 +3,8 @@ const app = express();
 const connection = require("./database/dataBase");
 const categoriesController = require("./categories/CategoriesController");
 const articlesController = require("./articles/articlesController");
+const Article= require("./articles/Article")
+const Category= require("./categories/Category")
 
 app.use(express.urlencoded({ extended: true }));
 //app.use(express.json);
