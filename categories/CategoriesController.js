@@ -13,16 +13,18 @@ router.post("/categories/save", (req, res) => {
     Category.create({
       title: title,
       slug: slugify(title),
-    }).then(()=>{
-      res.redirect("/")
-    })
+    }).then(() => {
+      res.redirect("/");
+    });
   } else {
     res.redirect("/admin/categories/new");
   }
 });
 
-router.get("/admin/categories",(req, res)=>{
-  res.render("admin/categories/index.ejs")
-})
+router.get("/admin/categories", (req, res) => {
+  Category.findAll().then((categories) => {
+    res.render("admin/categories/index.ejs",{categories:categories});
+  });
+});
 
 module.exports = router;
