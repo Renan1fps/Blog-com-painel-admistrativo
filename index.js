@@ -6,7 +6,7 @@ const articlesController = require("./articles/articlesController");
 const Article= require("./articles/Article")
 const Category= require("./categories/Category")
 
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: false }));
 //app.use(express.json);
 app.set("view engine", "ejs");
 app.use(express.static("public"));
