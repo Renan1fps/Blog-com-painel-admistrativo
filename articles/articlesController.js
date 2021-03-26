@@ -2,10 +2,12 @@ const express = require("express");
 const router = express.Router();
 const Article = require("./Article");
 const slugify = require("slugify");
+const Category = require("../categories/Category");
 
 router.get("/admin/articles/new", (req, res) => {
-  res.render("admin/articles/new");
+  Category.findAll().then((categories) => {
+    res.render("admin/articles/new", { categories: categories });
+  });
 });
-
 
 module.exports = router;
