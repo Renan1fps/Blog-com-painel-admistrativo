@@ -7,12 +7,21 @@
                     <h2>Novo artigo</h2>
                 </div>
                 <div class="card-body">
-                    <form method="POST" action="/articles/save">
+                    <form method="POST" action="/admin/article/save">
                         <input class="form-control" type="text" name="title" placeholder="título do artigo"><br>
-                        <textarea class="form-control" name="body" id="" cols="30" rows="10" placeholder="escreva seu artigo"></textarea><br>
+                        <textarea id="article" class="form-control" name="body" placeholder="escreva seu artigo"></textarea><br>
                         <button class="btn btn-success">Cadastrar</button>
                     </form>
                 </div>
             </div>
         </div>
         <%-include('../../partials/footer.ejs')%>
+        <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin""></script>
+        <script>
+            tinymce.init({
+                selector:"#article",
+                plugins:[
+                    "advlist autolink link image lists print preview hr searchreplace wordcount fullscreen insertdatetime media save table paste emoticons"
+                ]
+            })
+        </script>
