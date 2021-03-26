@@ -10,4 +10,18 @@ router.get("/admin/articles/new", (req, res) => {
   });
 });
 
+router.post("/articles/save", (req, res) => {
+  var title = req.body.title;
+  var body = req.body.body;
+  var id = req.body.category;
+  Article.create({
+    title: title,
+    slug: slugify(title),
+    body: body,
+    categoryId: id,
+  }).then(() => {
+    res.redirect("/admin/articles/new");
+  });
+});
+
 module.exports = router;
