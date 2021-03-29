@@ -22,6 +22,12 @@
                         <td><%=articles.title%></td>
                         <td><%=articles.slug%></td>
                         <td><%=articles.category.title%></td>
+                        <td>
+                            <form action="/articles/delete" method="POST" onsubmit="confirmarDelecao(event,this)">
+                            <input type="hidden" name="id" value="<%= articles.id %>">
+                            <button class="btn btn-danger">Deletar</button>
+                             </form>
+                        </td>
                     </tr>
 
                  <% })%>
@@ -32,7 +38,7 @@
             <script> //boa pratica é melhor criar um arquivo js separado e chamar na tag script
                 function confirmarDelecao(event,form) {
                     event.preventDefault();
-                    var decisao = confirm("Deseja realmente deletar essa categoria?")
+                    var decisao = confirm("Deseja realmente deletar esse artigo?")
                     if (decisao) {
                         form.submit();
                     } else {
