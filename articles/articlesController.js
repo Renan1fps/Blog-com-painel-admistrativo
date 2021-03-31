@@ -33,18 +33,35 @@ router.post("/articles/save", (req, res) => {
 });
 
 router.post("/articles/delete", (req, res) => {
- var id= req.body.id;
- if(isNaN(id) && id===undefined){
-   res.redirect("/admin/articles")
- }else{
-   Article.destroy({
-     where:{
-       id: id
-     }
-   }).then(()=>{
-     res.redirect("/admin/articles")
-   })
- }
+  var id = req.body.id;
+  if (isNaN(id) && id === undefined) {
+    res.redirect("/admin/articles");
+  } else {
+    Article.destroy({
+      where: {
+        id: id,
+      },
+    }).then(() => {
+      res.redirect("/admin/articles");
+    });
+  }
+});
+
+router.get("/admin/articles/edit/:id", (req, res) => {
+  var id = req.params.id;
+  Article.findByPk(id)
+    .then((article) => {
+      if (article != undefined) {
+        Category.findAll().then((categories) => {
+          res.render("admin/articles/edit", { categories: categories });
+        });
+      } else {
+        res.redirect("/");
+      }
+    })
+    .catch((erro) => {
+      res.redirect("/");
+    });
 });
 
 module.exports = router;
