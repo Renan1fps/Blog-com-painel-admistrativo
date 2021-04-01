@@ -21,7 +21,7 @@
                         <td><%=articles.id%></td>
                         <td><%=articles.title%></td>
                         <td><%=articles.slug%></td>
-                        <td><%=articles.category.title%></td>
+                        <td><%=articles.category.title%></td>  
                         <td>
                             <form action="/articles/delete" method="POST" onsubmit="confirmarDelecao(event,this)">
                             <input type="hidden" name="id" value="<%= articles.id %>">
