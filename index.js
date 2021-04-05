@@ -5,6 +5,8 @@ const categoriesController = require("./categories/CategoriesController");
 const articlesController = require("./articles/articlesController");
 const Article = require("./articles/Article");
 const Category = require("./categories/Category");
+const usersController = require("./user/UserController");
+const User= require("./user/User")
 
 app.use(express.urlencoded({ extended: false }));
 //app.use(express.json);
@@ -22,6 +24,7 @@ connection
 
 app.use("/", categoriesController);
 app.use("/", articlesController);
+app.use("/", usersController);
 
 app.get("/", (req, res) => {
   Article.findAll({
