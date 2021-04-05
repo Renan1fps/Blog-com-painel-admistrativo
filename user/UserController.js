@@ -11,6 +11,13 @@ router.get("/admin/user/create", (req, res) => {
    res.render("admin/users/create")
   });
 
- // User.sync({force: false}) só para criar a tabela caso não exista
+router.post("/users/create",(req,res)=>{
+  var email =req.body.email
+  var password =req.body.password
+
+  res.json({email,password})
+
+
+})
 
 module.exports = router;
