@@ -15,7 +15,7 @@ app.set("view engine", "ejs");
 app.use(express.static("public"));
 app.use(session({
   secret: "20030927",
-  cookie: {maxAge: 100000}
+  cookie: {maxAge: 1000000}
 }))
 
 connection
